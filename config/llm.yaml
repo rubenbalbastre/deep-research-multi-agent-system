@@ -1,0 +1,19 @@
+"research":
+  "tools":
+    "summarization_tool":
+      "model_name": "gpt-4o-mini"
+      "temperature": 0
+  "research_agent":
+    "model_name": "gpt-4o-mini"
+    "temperature": 0
+  "summarization_research":
+    "model_name": "gpt-4o-mini"
+    "temperature": 0
+"scope":
+  "topic_clarification":
+    "model_name": "gpt-4o-mini"
+    "temperature": 0
+  "research_brief":
+    "model_name": "gpt-4o-mini"
+    "temperature": 0
+
