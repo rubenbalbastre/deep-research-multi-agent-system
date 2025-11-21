@@ -41,3 +41,10 @@ Once configured, open and run the notebook `app.ipynb`
 Under the directory `/examples/` there are placed some basic scripts to demonstrate the action of each agent individually. Note that this are not tests which intend to cover all the casuistics in an agent behaviour.
 
 ## 🛠️ Configuration Example
+
+## Elements
+
+* Geopolitical Agent
+* Macro-Economics Agent
+* Monetary Agent
+* Deep Research Agent
