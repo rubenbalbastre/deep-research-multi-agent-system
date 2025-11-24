@@ -36,6 +36,21 @@ Once configured, open and run the notebook `app.ipynb`
 
 ## 🧠 Technical Overview
 
+### Introduction
+
+Methodology -> workflows implemented thorugh classes wrappers to facility configuration of LLM parameters such as temperature. LLMs configuration is made using a yaml file like this:
+
+```yaml
+"scope":
+  "topic_clarification":
+    "model_name": "gpt-4o-mini"
+    "temperature": 0
+  "research_brief":
+    "model_name": "gpt-4o-mini"
+    "temperature": 0
+
+```
+
 ### examples
 
 Under the directory `/examples/` there are placed some basic scripts to demonstrate the action of each agent individually. Note that this are not tests which intend to cover all the casuistics in an agent behaviour.
@@ -47,3 +62,13 @@ Under the directory `/examples/` there are placed some basic scripts to demonstr
 * Monetary Agent
 * Labour Market Agent
 * Deep Research Agent
+
+
+## References:
+
+
+* [Deep Research](https://github.com/langchain-ai/open_deep_research)
+* [Deep Agents](https://github.com/langchain-ai/deepagents)
+* [AlphaAgents paper](https://arxiv.org/abs/2508.11152)
+* [Antrophic "think" tool](https://www.anthropic.com/engineering/claude-think-tool)
+* [Anthropic Multi-Agent Research System](https://www.anthropic.com/engineering/multi-agent-research-system)
