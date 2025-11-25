@@ -271,8 +271,8 @@ class Supervisor:
 
         tools = [ConductResearch, ResearchComplete, think_tool]
         
-        from subagents.research_agent import Research
-        research_tool = Research(
+        from subagents.research_agent import ResearchAgent
+        research_tool = ResearchAgent(
             llm_config=self.llm_config.get("research")
         )
 

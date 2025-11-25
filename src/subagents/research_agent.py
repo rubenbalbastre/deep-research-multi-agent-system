@@ -28,8 +28,6 @@ class ResearchSummary(BaseModel):
     summary: str = Field(description="Concise sumary of the webpage content")
 
 
-# ===== CONFIGURATION =====
-
 class LLMCall:
     def __init__(self, llm_config, tools):
         self._llm_config = llm_config
@@ -55,6 +53,7 @@ class LLMCall:
                 )
             ]
         }
+
 
 class SummarizeResearch:
     def __init__(self, llm_config):
@@ -88,6 +87,7 @@ class SummarizeResearch:
             "research_summary": str(response.content),
             "raw_notes": ["\n".join(raw_notes)]
         }
+
 
 class ToolNode:
     def __init__(self, tools):
@@ -138,7 +138,8 @@ def route_research(state: ResearcherState) -> Literal["tool_node", "summarize_re
     
     return path
 
-class Research:
+
+class ResearchAgent:
     def __init__(self, llm_config, compile_config = {}):
         self.llm_config = llm_config
         self.graph = None
