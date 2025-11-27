@@ -5,6 +5,7 @@ from langchain.chat_models import init_chat_model
 import operator
 from typing import Annotated, Literal, List
 from pydantic import BaseModel, Field
+import asyncio
 
 from sys import path
 
@@ -110,6 +111,14 @@ class ToolNode:
             observations.append(
                 await tool.ainvoke(tool_call["args"])
             )
+        # Launch parallel research agents
+        coros = [
+            self.tools_by_name[tool_call["name"]].ainvoke(tool_call["args"]) 
+            for tool_call in tool_calls
+        ]
+
+        # Wait for all research to complete
+        observations = await asyncio.gather(*coros)
                 
         # Create tool message outputs
         tool_outputs = [
