@@ -153,6 +153,11 @@ The search engine used is tavily search. This is motivated by two reasons:
 
 3. Rely on tavily search engine results. No tavily extract engine nor custom web scrapping is done. We aim to get information which is accesible through quick summaries. This might not be the case always but here we assume it.
 
+#### Think tool to guide the research
+
+The **Think tool** is used to add an explicit reflection step to each agent’s reasoning process, helping guide the research in a more structured, deliberate way. Instead of immediately acting on a query or search result, the agent pauses to generate a short internal explanation of what it understands, what its next step should be, and why. This reflective checkpoint improves coherence, reduces errors, and helps the agent stay aligned with the overall research objective. Inspired by Anthropic’s “think” tool, it serves as a lightweight planning mechanism embedded directly in the agent’s workflow, ensuring that research actions follow a clear chain of thought without exposing that internal reasoning to the user.
+
+
 ## Future Potential Developments
 
 * A system which triggers automatically a new research run when a future events occurs.
