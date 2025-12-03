@@ -114,6 +114,8 @@ The framework used to develop this project was LangGraph due to the flexibility 
  
 Agents and workflows are implemented in an object-oriented style. Configuration (e.g., LLM settings) is stored in YAML files, making it easy to reuse logic while varying model parameters.
 
+The models selected were gpt-4o-mini by default since we wanted to reduce cost of the API to the minimum. The summarizer node uses gpt-4.1 due to the requirements of a larger context window. Alternatives like a map-style summarize were discarted to simplify the execution.
+
 
 ```yaml
 "research":
@@ -121,7 +123,7 @@ Agents and workflows are implemented in an object-oriented style. Configuration 
     "model_name": "gpt-4o-mini"
     "temperature": 0
   "summarize_research":
-    "model_name": "gpt-4o-mini"
+    "model_name": "gpt-4.1"
     "temperature": 0
 "scope":
   "topic_clarification":
