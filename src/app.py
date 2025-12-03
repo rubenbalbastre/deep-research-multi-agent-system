@@ -42,7 +42,7 @@ class GetCurrentState:
 
         if not state.get("current_state_messages"):
             state.get("current_state_messages").append(HumanMessage(content=state.get("user_query")))
-        print(state.get("current_state_messages"))
+
         messages = state.get("current_state_messages")
         
         response = await self.llm.ainvoke(
@@ -130,7 +130,7 @@ class ToolNode:
         self.tools_by_name = {tool.name: tool for tool in tools}
         self._macro_step = macro_step
 
-    async def __call__(self, state):
+    async def __call__(self, state, config):
         """Execute supervisor decisions - either conduct research or end the process.
         
         Handles:
@@ -195,12 +195,13 @@ class ToolNode:
                 if conduct_research_calls:
                     # Launch parallel research agents
                     coros = [
-                        self.research_tool.ainvoke({
+                        self.research_tool.ainvoke(input={
                             "messages": [
                                 HumanMessage(content=tool_call["args"]["research_topic"])
                             ],
                             "research_topic": tool_call["args"]["research_topic"]
-                        }) 
+                        },
+                        config=config) 
                         for tool_call in conduct_research_calls
                     ]
 
@@ -212,13 +213,20 @@ class ToolNode:
                     # Each sub-agent returns compressed research findings in result["compressed_research"]
                     # We write this compressed research as the content of a ToolMessage, which allows
                     # the supervisor to later retrieve these findings via get_notes_from_tool_calls()
-                    research_tool_messages = [
-                        ToolMessage(
-                            content=result.get("research_summary", "Error synthesizing research report"),
+                    research_tool_messages = []
+                    for result, tool_call in zip(tool_results, conduct_research_calls):
+                        result_summary = result.get("research_summary", "Error synthesizing research report")
+                        import os
+                        if not os.path.isdir(f"data/{tool_call["id"]}"):
+                            os.makedirs(f"data/{tool_call["id"]}")
+                        with open(f"data/{tool_call["id"]}/summary.md", "w") as f:
+                            f.write(result_summary)
+                        research_tool_messages.append(
+                            ToolMessage(
+                            content=result_summary,
                             name=tool_call["name"],
                             tool_call_id=tool_call["id"]
-                        ) for result, tool_call in zip(tool_results, conduct_research_calls)
-                    ]
+                        ))
                     
                     tool_messages.extend(research_tool_messages)
 
