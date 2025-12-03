@@ -3,7 +3,7 @@
     "model_name": "gpt-4o-mini"
     "temperature": 0
   "summarize_research":
-    "model_name": "gpt-4o-mini"
+    "model_name": "gpt-4.1"
     "temperature": 0
 "scope":
   "topic_clarification":
