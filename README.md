@@ -65,7 +65,7 @@ The main workflow mirrors the two-stage design described above:
 
 Both rely on a shared toolkit (“Macro Tools”) that includes:
 
-* **Conduct Research tool** — Launches a Lead Research Agent that performs structured multi-step research.
+* **Conduct Research tool** — Launches a Research System run that performs structured multi-step research.
 
 * **Think tool** — Produces reflection steps that help guide agent reasoning.
 
