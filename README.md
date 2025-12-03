@@ -51,6 +51,8 @@ Under the directory `/examples/` there are placed some basic scripts to demonstr
 * Lead Research Agent coordinating Research Agents
 * Research System (Scope System + Lead Research Agent)
 
+For a full execution of the system, you should execute `app.ipynb`. It will generate summaries of each research made by the Lead Research Agent each time it is called. They are saved in f`data/{tool_call_id}/summary.md` The default calls are not organized but just saved for showing purposes.
+
 
 ## 🧠 Technical Overview
 
