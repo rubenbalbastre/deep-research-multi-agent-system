@@ -159,6 +159,10 @@ The search engine used is tavily search. This is motivated by three reasons:
 
 The **Think tool** is used to add an explicit reflection step to each agent’s reasoning process, helping guide the research in a more structured, deliberate way. Instead of immediately acting on a query or search result, the agent pauses to generate a short internal explanation of what it understands, what its next step should be, and why. This reflective checkpoint improves coherence, reduces errors, and helps the agent stay aligned with the overall research objective. Inspired by Anthropic’s “think” tool, it serves as a lightweight planning mechanism embedded directly in the agent’s workflow, ensuring that research actions follow a clear chain of thought without exposing that internal reasoning to the user.
 
+#### Termination conditions
+
+Agents are provided a tool named "ResearchComplete" to indicate that the research should be. However, sometimes it is required to force the loop finish to avoid non-desired costs. Some tricks are used inside the graph states to finish loops.
+
 
 ## Future Potential Developments
 
