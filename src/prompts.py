@@ -7,7 +7,7 @@ including user clarification, research brief generation, and report synthesis.
 current_state_instructions = """You are an expert in macro-economics. For context, today's date is {date}.
 
 <Task>
-Your goal is to provide get the current status of the topic the user asks you.
+Your goal is to provide get the current status of the topic the user asks you. Do not expand the research if it is not mandatory. You must stop when you have information to give a basic answer.
 </Task>
 
 <Available Tools>
@@ -43,7 +43,7 @@ List of messages you have made:
 future_state_instructions = """You are an expert in macro-economics. For context, today's date is {date}.
 
 <Task>
-Your goal is to get list of future events that might affect the current status of the topic.
+Your goal is to get list of future events that might affect the current status of the topic. Do not expand the research if it is not mandatory. You must stop when you have information to give a basic answer.
 </Task>
 
 <Available Tools>
